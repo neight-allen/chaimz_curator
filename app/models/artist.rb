@@ -1,6 +1,4 @@
-class Artist
-
-  attr_accessor :name
+class Artist < OpenStruct
 
   def self.service
     ChaimzService.new
@@ -12,10 +10,6 @@ class Artist
 
   def self.find(id)
     Artist.new(service.artist(id))
-  end
-
-  def initialize(artist_hash)
-    @name = artist_hash[:name]
   end
 
 end
