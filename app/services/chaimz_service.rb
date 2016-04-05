@@ -4,7 +4,19 @@ class ChaimzService
     @host = "https://my-chaimz.herokuapp.com/api/v1"
   end
 
-  def artists
-    HTTParty.get(@host + "/artists.json", headers: @headers)
+  def get(path)
+    parse(HTTParty.get(@host + path + ".json", headers: @headers).body)
   end
+
+  def artists
+    get("/artists")
+  end
+
+  private
+
+    def parse(json_string)
+      JSON.parse(json_string, symbolize_names: true)
+    end
+
+
 end
