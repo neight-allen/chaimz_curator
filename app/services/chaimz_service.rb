@@ -12,6 +12,10 @@ class ChaimzService
     get("/artists")
   end
 
+  def artist(id)
+    get("/artists/#{id}")
+  end
+
   private
 
     def parse(json_string)
