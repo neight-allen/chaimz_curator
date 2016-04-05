@@ -12,6 +12,10 @@ class ChaimzService
     parse(HTTParty.post(@host + path + ".json?" + params.to_query, headers: @headers).body)
   end
 
+  def delete(path)
+    parse(HTTParty.delete(@host + path + ".json", headers: @headers).body)
+  end
+
   def artists
     get("/artists")
   end
@@ -22,6 +26,10 @@ class ChaimzService
 
   def create_artist(artist)
     post("/artists", artist.to_h)
+  end
+
+  def destroy_artist(artist)
+    delete("/artists/#{artist.id}")
   end
 
   private

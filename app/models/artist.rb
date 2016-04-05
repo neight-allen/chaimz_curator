@@ -26,6 +26,10 @@ class Artist < OpenStruct
     Artist.new(artist_hash)
   end
 
+  def destroy
+    Artist.service.destroy_artist(self)
+  end
+
   # def update(artist_params)
   #   artist_params.each { |key, value| self[key] = value}
   #   Artist.service.update_artist(artist)
