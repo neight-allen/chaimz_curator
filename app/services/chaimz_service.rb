@@ -8,12 +8,20 @@ class ChaimzService
     parse(HTTParty.get(@host + path + ".json", headers: @headers).body)
   end
 
+  def post(path, params)
+    parse(HTTParty.post(@host + path + ".json?" + params.to_query, headers: @headers).body)
+  end
+
   def artists
     get("/artists")
   end
 
   def artist(id)
     get("/artists/#{id}")
+  end
+
+  def create_artist(artist)
+    post("/artists", artist.to_h)
   end
 
   private

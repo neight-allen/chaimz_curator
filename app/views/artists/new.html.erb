@@ -1,0 +1,18 @@
+<h3>Create Artist</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <br/>
+      <br/>
+      <%= form_tag(artists_path) do |f| %>
+        <div class="field">
+          <%= label_tag :name %><br>
+          <%= text_field_tag 'artist[name]', nil, class:"form-control text-input", required:true %>
+        </div>
+        <br>
+      <%= submit_tag "Create Artist", class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
